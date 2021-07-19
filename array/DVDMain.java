@@ -137,6 +137,85 @@ public class DVDMain {
         for (int i = 0; i < intArray.length; i++) {
             System.out.println("Index " + i + " contains " + intArray[i]);
         } 
+
+
+    // Deletion from the array: 
+    // 1. Deleting last element from the array: 
+
+    //declaring an integer array of 10 elements
+        int[] intArray2 = new int[10];
+
+    // array currently contains 0 = elements
+        int length2 = 0;
+
+    // Adding elements at the first 6 indexes of the array
+    // Essentially, this variable keeps track of the next index that is free for inserting a new element. This is always the same value as the overall length of the Array. 
+        for(int i=0; i < 6; i++) {
+            intArray2[length2] = i;
+            length2++;
+        }
+
+        // Deletion from the end is as simple as reducing the length
+        // of the array by 1.
+        length2--;
+
+
+        // Would not delete the last element in the array. Why? 'coz When we use intArray.length, we're looking every valid index of the Array. 
+        //for (int i = 0; i < intArray2.length; i++) {
+        //    System.out.println("Index " + i + " contains " + intArray2[i]);
+        //}
+        
+        System.out.println("-------------IntArray2-------------------");
+
+        // Code should have been
+        // When in fact, we only want to look at the ones that we've put values into. The fix is easy, we just iterate up to our own length variable instead.
+        for (int i = 0; i < length2; i++) {
+            System.out.println("Index " + i + " contains " + intArray2[i]);
+        }
+
+        length2++;
+        intArray2[5] = 25;
+
+        for (int i = 0; i < length2; i++) {
+            System.out.println("Index " + i + " contains " + intArray2[i]);
+        }
+
+
+        // Deleting the first element of array : index[0]
+        // Starting at index 1, we shift each element one position to the left.
+        for(int i = 1; i < length2; i++) {
+            // shift each element one position to the left
+            intArray2[i-1] = intArray2[i];
+        }
+
+        // Note that it's important to reduce the length of the array by 1.
+        // Otherwise, we'll lose consistency of the size. This length
+        // variable is the only thing controlling where new elements might
+        // get added.
+        length2--;
+
+        System.out.println("------- Deleting element at 1st position ---------");
+
+        for (int i = 0; i < length2; i++) {
+            System.out.println("Index " + i + " contains " + intArray2[i]);
+        }
+
+        System.out.println("------- Deleting element at index 1 ---------");
+
+        // Say we want to delete the element at index 1
+        for (int i = 2; i < length2; i++) {
+             // Shift each element one position to the left
+            intArray2[i - 1] = intArray2[i];
+        }
+
+        // Again, the length needs to be consistent with the current
+        // state of the array.
+        length2--;
+
+        for (int i = 0; i < length2; i++) {
+            System.out.println("Index " + i + " contains " + intArray2[i]);
+        }
+
     }
 }
 

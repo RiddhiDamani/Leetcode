@@ -3,20 +3,15 @@ package array;
 public class DuplicateZeros {
     public void duplicateZeros(int[] arr) {
         int[] tempArr = new int[arr.length];
-        int s = 0;
-        int d = 0;
+        int countZero = 0;
 
         for(int i=0; i < arr.length; i++) {     
             if(arr[i] == 0) {
-                tempArr[i] = arr[i];
-                tempArr[i + 1] = d;
+                countZero++;
             }
-            else {
-                tempArr[i] = arr[i];
-            }
-
-            System.out.println(tempArr[i]);
         }
+
+        System.out.println(countZero);
     }
 
     public static void main(String[] args) {
