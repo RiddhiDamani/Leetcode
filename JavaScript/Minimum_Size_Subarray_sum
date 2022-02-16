@@ -1,0 +1,14 @@
+let minLength = Infinity
+  let start = 0
+  let sum = 0
+
+  for (let i = 0; i < nums.length; i++) {
+    sum += nums[i]
+
+    while (sum >= target) {
+      minLength = Math.min(minLength, i + 1 - start)
+      sum -= nums[start++]
+    }
+  }
+
+  return minLength === Infinity ? 0 : minLength
