@@ -25,9 +25,9 @@ class SinglyLinkedList {
       this.tail = this.head;
     } else {
       this.tail.next = newNode;
+      //console.log("this.tail.next:", this.tail.next);
       this.tail = newNode;
-      console.log("this.tail:", this.tail);
-      console.log("this.tail.next:", this.tail.next);
+      //console.log("this.tail:", this.tail);
     }
     this.length++;
     return this;
@@ -41,6 +41,50 @@ class SinglyLinkedList {
   //     current = current.next;
   //   }
   // }
+
+  get(indexVal) {
+    if (indexVal < 0 || indexVal >= this.length) {
+      return null;
+    }
+    let counter = 0;
+    var current = this.head;
+    while (counter !== indexVal) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(indexVal, value) {
+    let foundNode = this.get(indexVal);
+    if (foundNode) {
+      //console.log("Hi! I am in here!");
+      foundNode.val = value;
+      return true;
+    }
+    return false;
+  }
+
+  insert(indexVal, value) {
+    if (indexVal < 0 || indexVal > this.length) {
+      return false;
+    }
+    if (indexVal === this.length) {
+      this.push(value);
+      return true; // OR both these statements can also be written as !!this.push(val)
+    }
+    if (indexVal === 0) {
+      this.unshift(value);
+      return true;
+    }
+    let newNode = new Node(value);
+    let prev = this.get(indexVal - 1);
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
 
   // remove node from end of the Linked List
   pop() {
@@ -95,11 +139,19 @@ class SinglyLinkedList {
 }
 
 var list = new SinglyLinkedList();
-list.push("HELLO");
-list.push("GOODBYE");
-list.push("!");
-//list.traverse();
+list.push(100);
+list.push(201);
+list.push(250);
+list.push(350);
+list.insert(0, "FIRST");
 console.log(list);
+// list.push("HELLO");
+// list.push("GOODBYE");
+// list.push("!");
+//list.traverse();
+// console.log(list.set(1, "Riddhi"));
+// console.log(list);
+//console.log(list);
 
 // var first = new Node("Hi");
 // first.next = new Node("There!");
