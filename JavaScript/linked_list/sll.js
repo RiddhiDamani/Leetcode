@@ -86,6 +86,51 @@ class SinglyLinkedList {
     return true;
   }
 
+  remove(indexVal) {
+    if (indexVal < 0 || indexVal > this.length) {
+      return undefined;
+    }
+    if (indexVal === this.length - 1) {
+      this.pop();
+      return true; // OR both these statements can also be written as !!this.pop()
+    }
+    if (indexVal === 0) {
+      this.shift();
+      return true;
+    }
+    let prev = this.get(index - 1);
+    let removed = prev.next;
+    prev.next = removed.next;
+    this.length--;
+    return removed;
+  }
+
+  reverse() {
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let prev = null;
+    let next;
+    for (let i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
+
+  print() {
+    var arr = [];
+    var current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    console.log(arr);
+  }
+
   // remove node from end of the Linked List
   pop() {
     if (!this.head) {
