@@ -98,7 +98,7 @@ class SinglyLinkedList {
       this.shift();
       return true;
     }
-    let prev = this.get(index - 1);
+    let prev = this.get(indexVal - 1);
     let removed = prev.next;
     prev.next = removed.next;
     this.length--;
