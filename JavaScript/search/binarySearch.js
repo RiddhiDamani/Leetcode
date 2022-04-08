@@ -18,7 +18,7 @@
     return arr[middle] === val ? middle : -1; 
   }
   
-  console.log(binarySearch([1,3,5,6,7,8], -10));
+  console.log(binarySearch([1,3,5,6,7,8], 6));
         
         // 1,3,5,6,7,8
         // S   M     E
