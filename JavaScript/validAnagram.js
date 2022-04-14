@@ -8,6 +8,9 @@ function validAnagram(s, t) {
       obj1[char] = 1;
     }
   }
+
+  console.log(obj1);
+
   for (let char of t) {
     if (obj2[char]) {
       obj2[char]++;
@@ -28,3 +31,5 @@ function validAnagram(s, t) {
 
   return true;
 }
+
+console.log(validAnagram('mom','mom'))
