@@ -25,12 +25,45 @@ class SinglyLinkedList {
       this.tail = this.head;
     } else {
       this.tail.next = newNode;
-      //console.log("this.tail.next:", this.tail.next);
       this.tail = newNode;
-      //console.log("this.tail:", this.tail);
     }
     this.length++;
     return this;
+  }
+
+   // unshift - insert new node at the beginning
+   unshift(val) {
+    var newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
+
+  insert(indexVal, value) {
+    if (indexVal < 0 || indexVal > this.length) {
+      return false;
+    }
+    if (indexVal === this.length) {
+      this.push(value);
+      return true; // OR both these statements can also be written as !!this.push(val)
+    }
+    if (indexVal === 0) {
+      this.unshift(value);
+      return true;
+    }
+    let newNode = new Node(value);
+    let prev = this.get(indexVal - 1);
+    let temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
   }
 
   // one way of traversing
@@ -65,26 +98,7 @@ class SinglyLinkedList {
     return false;
   }
 
-  insert(indexVal, value) {
-    if (indexVal < 0 || indexVal > this.length) {
-      return false;
-    }
-    if (indexVal === this.length) {
-      this.push(value);
-      return true; // OR both these statements can also be written as !!this.push(val)
-    }
-    if (indexVal === 0) {
-      this.unshift(value);
-      return true;
-    }
-    let newNode = new Node(value);
-    let prev = this.get(indexVal - 1);
-    let temp = prev.next;
-    prev.next = newNode;
-    newNode.next = temp;
-    this.length++;
-    return true;
-  }
+  
 
   remove(indexVal) {
     if (indexVal < 0 || indexVal > this.length) {
@@ -168,19 +182,7 @@ class SinglyLinkedList {
     return oldHead;
   }
 
-  // add node at the beginning of the linked list.
-  unshift(val) {
-    var newNode = new Node(val);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = this.head;
-    } else {
-      newNode.next = this.head;
-      this.head = newNode;
-    }
-    this.length++;
-    return this;
-  }
+ 
 }
 
 var list = new SinglyLinkedList();
