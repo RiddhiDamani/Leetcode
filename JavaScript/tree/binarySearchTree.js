@@ -88,11 +88,12 @@ class BinarySearchTree {
   BFS() {
     // data - what we will return at the end
     // queue - empty array
-    var node = this.root,
-      visitedData = [],
-      queue = [];
+    let node = this.root;
+    let visitedData = [];
+    let queue = [];
 
     queue.push(this.root);
+    
     while (queue.length) {
       // taking node from the beginning of the queue
       node = queue.shift();
@@ -198,7 +199,6 @@ console.log(tree.DFSInOrder());
 tree.find(7);
 tree.contains(7);
 tree.contains(-1);
-
 
 // var tree = new BinarySearchTree();
 // tree.root = new Node(10);
