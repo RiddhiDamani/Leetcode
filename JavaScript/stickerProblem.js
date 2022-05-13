@@ -1,10 +1,10 @@
 // Source Sticker : SEATTLE
 // Target : SEA, LET, TATTLE
 function stickers(sticker, targetWord) {
-  let stickerDict = {};
-  let targetWordDict = {};
-  let maxStickers = 0;
-  let count = 0;
+  let stickerDict = {},
+    targetWordDict = {};
+  let maxStickers = 0,
+    count = 0;
 
   if (targetWord.length === 0) {
     return -1;
@@ -28,7 +28,7 @@ function stickers(sticker, targetWord) {
     }
   }
 
-  // Calculate max stickers requires
+  // Calculate max stickers required
   for (let x in targetWordDict) {
     if (stickerDict[x]) {
       maxStickers = Math.ceil(targetWordDict[x] / stickerDict[x]);
