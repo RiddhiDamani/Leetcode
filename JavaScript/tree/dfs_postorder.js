@@ -29,7 +29,7 @@ class Tree {
 
   dfs_postorder_iterative(root) {
     if (root === null) {
-      return;
+      return [];
     }
     let stack = [];
     let currentNode = root;
@@ -44,7 +44,10 @@ class Tree {
         if (tempNode === null) {
           tempNode = stack.pop();
           res.push(tempNode.value);
-          while (stack.length !== 0 && tempNode === stack[stack.length - 1].right) {
+          while (
+            stack.length !== 0 &&
+            tempNode === stack[stack.length - 1].right
+          ) {
             tempNode = stack.pop();
             res.push(tempNode.value);
           }
@@ -57,13 +60,6 @@ class Tree {
     return res;
   }
 }
-
-Array.prototype.peek = function () {
-  if (this.length === 0) {
-    throw new Error("Array Index Out of Bounds");
-  }
-  return this[this.length - 1];
-};
 
 // Tree
 //      10
